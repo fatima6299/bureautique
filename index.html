@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscription : initiation à la bureautique</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--nuit:#0F2A43;--ambre:#F2B705;--ciel:#E8F0F7;--texte:#12263A}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:var(--texte);background:var(--nuit);line-height:1.5}
+.wrap{max-width:680px;margin:0 auto}
+.hero{background:linear-gradient(rgba(15,42,67,.45),rgba(15,42,67,.8)),url(fond-haut.svg) center/cover no-repeat;color:#fff;padding:72px 20px 56px}
+h1{font-family:Sora,sans-serif;font-weight:800;font-size:clamp(34px,7vw,56px);line-height:1.08;margin:0 0 16px}
+.hero p{font-size:20px;margin:0 0 28px;max-width:32em}
+.faits{display:flex;flex-wrap:wrap;gap:14px 32px;margin:0;padding:0;list-style:none}
+.faits li{border-left:3px solid var(--ambre);padding-left:12px}
+.faits span{display:block;font-size:15px;color:#C9D6E2}
+.faits strong{font-family:Sora,sans-serif;font-size:20px}
+.formulaire{background:var(--ciel) url(fond-formulaire.svg);padding:40px 20px 72px}
+.carte{background:#fff;border-radius:16px;padding:28px 24px;box-shadow:0 8px 28px rgba(15,42,67,.14)}
+h2{font-family:Sora,sans-serif;font-size:26px;margin:0 0 8px}
+.note{margin:0 0 24px;color:#3C5266}
+.champ{margin-bottom:20px}
+label,legend{display:block;font-weight:600;margin-bottom:6px;padding:0}
+.aide{font-weight:400;font-size:15px;color:#3C5266}
+input[type=text],input[type=tel],input[type=email],select{width:100%;font:inherit;padding:12px;border:2px solid #AFC0D1;border-radius:8px;background:#fff;color:var(--texte)}
+fieldset{border:0;padding:0;margin:0 0 20px}
+.choix{display:flex;align-items:center;gap:10px;font-weight:400;margin-bottom:8px}
+.choix input{width:20px;height:20px;accent-color:var(--nuit)}
+.jours{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0 12px}
+:focus-visible{outline:3px solid var(--ambre);outline-offset:2px}
+button{width:100%;font:inherit;font-family:Sora,sans-serif;font-weight:800;font-size:18px;padding:16px;border:0;border-radius:10px;background:var(--ambre);color:var(--nuit);cursor:pointer}
+button:hover{background:#DDA500}
+button:disabled{opacity:.6;cursor:wait}
+.piege{position:absolute;left:-9999px}
+#statut{margin:14px 0 0;font-weight:600;color:#B42318}
+#merci{text-align:center;padding:12px 0}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<h1>Apprenez les bases de la bureautique</h1>
+<p>Une initiation à Word, Excel et PowerPoint, pour savoir utiliser son ordinateur au quotidien.</p>
+<ul class="faits">
+<li><span>Début</span><strong>1er novembre</strong></li>
+<li><span>Durée</span><strong>un mois</strong></li>
+<li><span>Format</span><strong>en ligne</strong></li>
+<li><span>Prix</span><strong>gratuit</strong></li>
+</ul>
+</div>
+</header>
+<main class="formulaire">
+<div class="wrap carte">
+<div id="merci" hidden>
+<h2>Inscription envoyée</h2>
+<p>Merci ! Vous recevrez les informations de connexion avant le 1er novembre.</p>
+<!-- Pour ajouter le lien du groupe WhatsApp, ajoutez ici : <p><a href="LIEN_DU_GROUPE">Rejoindre le groupe WhatsApp</a></p> -->
+</div>
+<form id="inscription">
+<h2>Je m’inscris</h2>
+<p class="note">Pour suivre la formation, il faut un ordinateur en bon état avec Word, Excel et PowerPoint installés, et une connexion internet stable.</p>
+<div class="champ"><label for="nom">Nom et prénom</label><input type="text" id="nom" name="nom" autocomplete="name" required></div>
+<div class="champ"><label for="whatsapp">Numéro WhatsApp <span class="aide">avec l’indicatif, par exemple +221…</span></label><input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" required></div>
+<div class="champ"><label for="email">Adresse e-mail <span class="aide">les informations de connexion y seront envoyées</span></label><input type="email" id="email" name="email" autocomplete="email" required></div>
+<div class="champ"><label for="ville">Ville et pays de résidence</label><input type="text" id="ville" name="ville" autocomplete="address-level2"></div>
+<div class="champ"><label for="statut-pro">Vous êtes</label><select id="statut-pro" name="statut"><option>Étudiant(e)</option><option>Salarié(e)</option><option>En recherche d’emploi</option><option>Entrepreneur(e)</option><option>Autre</option></select></div>
+<div class="champ"><label for="niveau">Votre niveau actuel</label><select id="niveau" name="niveau"><option>Débutant complet</option><option>Je sais un peu utiliser l’ordinateur</option><option>Je connais déjà un peu Word ou Excel</option></select></div>
+<fieldset><legend>Avez-vous un ordinateur avec Word, Excel et PowerPoint installés ?</legend>
+<label class="choix"><input type="radio" name="ordinateur" value="Oui" required> Oui</label>
+<label class="choix"><input type="radio" name="ordinateur" value="Non, à installer avant le 1er novembre"> Non, je les installerai avant le 1er novembre</label></fieldset>
+<fieldset><legend>Avez-vous une connexion internet stable ?</legend>
+<label class="choix"><input type="radio" name="connexion" value="Oui" required> Oui</label>
+<label class="choix"><input type="radio" name="connexion" value="Non"> Non</label></fieldset>
+<fieldset><legend>Quels jours pouvez-vous suivre une séance de 2 heures ?</legend>
+<div class="jours">
+<label class="choix"><input type="checkbox" name="jours" value="Lundi"> Lundi</label>
+<label class="choix"><input type="checkbox" name="jours" value="Mardi"> Mardi</label>
+<label class="choix"><input type="checkbox" name="jours" value="Mercredi"> Mercredi</label>
+<label class="choix"><input type="checkbox" name="jours" value="Jeudi"> Jeudi</label>
+<label class="choix"><input type="checkbox" name="jours" value="Vendredi"> Vendredi</label>
+<label class="choix"><input type="checkbox" name="jours" value="Samedi"> Samedi</label>
+<label class="choix"><input type="checkbox" name="jours" value="Dimanche"> Dimanche</label>
+</div></fieldset>
+<div class="champ"><label for="source">Comment avez-vous connu la formation ?</label><select id="source" name="source"><option>WhatsApp</option><option>TikTok</option><option>YouTube</option><option>Un ami ou un proche</option><option>Autre</option></select></div>
+<div class="piege" aria-hidden="true"><label>Ne pas remplir<input type="text" name="site" tabindex="-1" autocomplete="off"></label></div>
+<button type="submit" id="envoyer">Envoyer mon inscription</button>
+<p id="statut" role="alert"></p>
+</form>
+</div>
+</main>
+<script>
+// Collez ici l’URL du script Google (voir les étapes de mise en place)
+const URL_SCRIPT = "COLLER_ICI_L_URL_DU_SCRIPT";
+const form = document.getElementById("inscription");
+const statut = document.getElementById("statut");
+const bouton = document.getElementById("envoyer");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (form.site.value) return;
+  if (URL_SCRIPT.startsWith("COLLER")) {
+    statut.textContent = "Le formulaire n’est pas encore relié à la feuille. Collez l’URL du script dans index.html.";
+    return;
+  }
+  statut.textContent = "";
+  bouton.disabled = true;
+  bouton.textContent = "Envoi en cours…";
+  try {
+    await fetch(URL_SCRIPT, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) });
+    form.hidden = true;
+    document.getElementById("merci").hidden = false;
+  } catch (err) {
+    statut.textContent = "L’envoi a échoué. Vérifiez votre connexion et réessayez.";
+    bouton.disabled = false;
+    bouton.textContent = "Envoyer mon inscription";
+  }
+});
+</script>
+</body>
+</html>
